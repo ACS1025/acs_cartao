@@ -8,36 +8,40 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
+            padding: 0;
             color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;            
-            width: 1080px; /* Largura fixa */
-            height: 1920px; /* Altura fixa */
+            width: 108vw; /* Largura fixa */
+            height: 100vh; /* Altura fixa */
+            overflow: hidden;
             text-align: center;
-            background: url('src/Card2.png') no-repeat top center;
+            
             background-size: 1080px 1920px;
         }
         .card {
-            width: 900px;
-            max-width: 910px;
-            padding: 80px;
+            width: 90vw;
+            max-width: 1080px;
+            padding: 40px;
             border-radius: 25px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
             align-items: center;
-            
+            background: url('src/Card2.png') no-repeat top center;
             position: absolute;
-            top: 40%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
 
         .card img {
-            width: 50%;
+            width: 35vw;
+            max-width: 400px;
+            height: auto;
             border-radius: 50%;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .card h2 {
