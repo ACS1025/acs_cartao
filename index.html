@@ -13,23 +13,25 @@
             display: flex;
             justify-content: center;
             align-items: center;            
-            width: 108vw; /* Largura fixa */
-            height: 100vh; /* Altura fixa */
+            width: 1080vw; /* Largura fixa */
+            height: 1920vh; /* Altura fixa */
             overflow: hidden;
-            text-align: center;
-            
+            text-align: center;            
             background-size: 1080px 1920px;
         }
         .card {
             width: 90vw;
-            max-width: 1080px;
-            padding: 40px;
+            max-width: 980px;
+            height: 100vh; /* Faz o card ter altura total da tela */
+            max-height: 1920px; /* Mantém um limite de altura */
+            padding: 100px;
             border-radius: 25px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: url('src/Card2.png') no-repeat top center;
+            background: url('src/Card2.png') no-repeat center center;
+            background-size: cover; /* Agora a imagem cobre toda a área */
             position: absolute;
             top: 50%;
             left: 50%;
@@ -42,16 +44,18 @@
             height: auto;
             border-radius: 50%;
             margin-bottom: 20px;
+            margin-top: 60px; /* Ajuste esse valor conforme necessário */
         }
 
         .card h2 {
             margin: 25px 0 20px;
-            font-size: 44px;
+            font-size: 70px; /* Aumentando o nome */
+            font-weight: bold;
         }
-
+        
         .card p {
             margin: 15px 0;
-            font-size: 40px;
+            font-size: 50px; /* Aumentando "Gestão de dados" */
         }
 
         .btn-group {
@@ -67,32 +71,32 @@
             justify-content: flex-start;
             text-decoration: none;
             color: whitesmoke;
-            padding: 25px;
-            border-radius: 40px;
-            margin: 25px 0;
+            padding: 30px 60px; /* Aumento leve no padding */
+            border-radius: 35px; /* Bordas um pouco mais arredondadas */
+            margin: 18px 0; /* Ajuste no espaçamento */
             font-weight: bold;
-            width: 210%;
-            max-width: 450px;
+            width: 95%; /* Levemente maior dentro do cartão */
+            max-width: 440px; /* 15% maior que os 380px anteriores */
             text-align: left;
-            font-size: 42px;
+            font-size: 57px; /* 15% maior que 32px */
             background: transparent;
             border: 2px solid whitesmoke;
             transition: all 0.3s ease;
         }
-
+        
         .btn img {
-            width: 60px;
-            height: 70px;
-            margin-right: 20px;
+            width: 75px; /* Aumento proporcional */
+            height: auto;
+            margin-right: 18px;
             filter: brightness(0) invert(1);
         }
-
-
+        
         .btn:hover {
             background: rgba(255, 255, 255, 0.2);
-            color: whitesmoke;
+            color: rgb(16, 25, 51);
         }
-
+        
+        
         .social-icons {
             display: flex;
             justify-content: center;
