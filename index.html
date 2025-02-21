@@ -112,18 +112,16 @@
         <p>Gestão de dados</p>
         <br>
         <br>
-        <br>
-        <a href="#" class="btn" onclick="agendarReuniao()">Agendar Reunião</a>
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Reunião%20de%20Consultoria&dates=20250221T150000Z/20250221T160000Z&details=Agende%20sua%20reunião%20com%20Ana%20Claudia%20de%20Souza&location=Online&add=acs.consult25@gmail.com&sf=true&output=xml" class="btn" target="_blank">Agendar Reunião</a>
         <a></a>
         <a href="https://wa.me/5511995229242" class="btn">WhatsApp</a>
         <a></a>
-        <a href="https://www.linkedin.com/in/acs-ana-claudia" class="btn">LinkedIn</a>
+        <a></a>
+        <!-- Botão para baixar o vCard -->
         <a href="#" class="btn" id="download-vcard">Baixar Contato</a>
         <br>
-        <br>
-        
-        
-        
+            
+               
         <div class="social-icons">
             <a href="https://github.com/ACS1025"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"></a>
             <a href="https://www.instagram.com/acs_consult/">
@@ -133,6 +131,22 @@
             <div class="qrcode">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://acs1025.github.io/acs_cartao/" alt="QR Code">
             </div>
+
+            <script>
+                // Dados do vCard
+                const vCardContent = `BEGIN:VCARD\nVERSION:3.0\nFN:Ana Claudia de Souza\nACS Consult\nTEL:+5511996232846\nEMAIL:acs.consult25@gmail.com\nEND:VCARD`;
+        
+                // Codificação Base64 do vCard
+                const vCardUrl = "data:text/vcard;base64," + btoa(vCardContent);
+        
+                // Configurar o botão para baixar o vCard
+                document.getElementById("download-vcard").addEventListener("click", function() {
+                    const a = document.createElement("a");
+                    a.href = vCardUrl;
+                    a.download = "contato_ana_claudia.vcf"; // Nome do arquivo para download
+                    a.click();
+                });
+            </script>
         </div>
     </div>
 </body>
