@@ -97,26 +97,6 @@
             border-radius: 15px;
         }
 
-        /* Modal para exibir detalhes do contato */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -129,29 +109,21 @@
         <a href="https://wa.me/5511995229242" class="btn">WhatsApp</a>
         <a href="mailto:acs.consult25@gmail.com" class="btn">E-mail</a>
         <a href="https://www.linkedin.com/in/acs-ana-claudia" class="btn">LinkedIn</a>
-        <a href="#" class="btn" onclick="openModal()">Baixar Contato</a>
-        <a href="https://calendar.google.com/calendar/u/0/r/eventedit" class="btn">Agendar Reunião</a>
+        <a href="#" class="btn" id="download-vcard">Baixar Contato</a>
+        
+        <!-- Botão para agendar e enviar e-mail -->
+        <a href="#" class="btn" onclick="agendarReuniao()">Agendar Reunião</a>
         
         <div class="social-icons">
             <a href="https://github.com/ACS1025"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"></a>
             <a href="https://www.instagram.com/acs_consult/"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
             <a href="https://www.linkedin.com/in/acs-ana-claudia"><img src="https://cdn-icons-png.flaticon.com/512/61/61109.png" alt="LinkedIn"></a>
             <div class="qrcode">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://acs1025.github.io" alt="QR Code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://acs1025.github.io/acs_cartao/" alt="QR Code">
             </div>
         </div>
 
-        <div class="toggle-mode" onclick="toggleMode()">Modo Claro/Escuro</div>
-    </div>
-
-    <div id="vcard-modal" class="modal">
-        <div class="modal-content">
-            <h3>Baixar Contato</h3>
-            <p>Ana Claudia de Souza<br>Gestão de Dados</p>
-            <a id="vcard-download" href="#" class="btn" download>Abrir vCard</a>
-            <br><br>
-            <button onclick="closeModal()">Fechar</button>
-        </div>
+        
     </div>
 
     <script>
@@ -159,20 +131,28 @@
             document.body.style.background = document.body.style.background === 'white' ? 'black' : 'white';
         }
 
-        function openModal() {
-            document.getElementById("vcard-modal").style.display = "flex";
-        }
-
-        function closeModal() {
-            document.getElementById("vcard-modal").style.display = "none";
-        }
-
         // Criar vCard automaticamente
         const vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:Souza;Ana Claudia\nFN:Ana Claudia de Souza\nORG:ACS Consult\nTITLE:Gestão de Dados\nTEL:+55 11 99623-2846\nEMAIL:acs.consult25@gmail.com\nURL:https://www.linkedin.com/in/acs-ana-claudia\nEND:VCARD`;
         
         const vCardBlob = new Blob([vCardData], { type: 'text/vcard' });
         const vCardUrl = URL.createObjectURL(vCardBlob);
-        document.getElementById("vcard-download").setAttribute("href", vCardUrl);
+
+        // Configurar o botão para baixar o vCard
+        document.getElementById("download-vcard").addEventListener("click", function() {
+            const a = document.createElement("a");
+            a.href = vCardUrl;
+            a.download = "contato_ana_claudia.vcf"; // Nome do arquivo para download
+            a.click();
+        });
+
+        // Função para agendar a reunião e enviar o e-mail
+        function agendarReuniao() {
+            // Abre o Google Calendar para agendar a reunião
+            window.open("https://calendar.google.com/calendar/u/0/r/eventedit", "_blank");
+
+            // Abre o cliente de e-mail para confirmar o agendamento
+            window.location.href = "mailto:acs.consult25@gmail.com?subject=Agendamento de Reunião&body=Olá,%20Gostaria%20de%20agendar%20uma%20reunião%20com%20vocês.%20Por%20favor,%20me%20confirme%20o%20melhor%20horário.";
+        }
     </script>
 </body>
 </html>
