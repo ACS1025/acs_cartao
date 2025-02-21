@@ -133,18 +133,30 @@
             </div>
 
             <script>
-                // Dados do vCard
-                const vCardContent = `BEGIN:VCARD\nVERSION:3.0\nFN:Ana Claudia de Souza\nACS Consult\nTEL:+5511996232846\nEMAIL:acs.consult25@gmail.com\nEND:VCARD`;
-        
-                // Codificação Base64 do vCard
-                const vCardUrl = "data:text/vcard;base64," + btoa(vCardContent);
-        
-                // Configurar o botão para baixar o vCard
-                document.getElementById("download-vcard").addEventListener("click", function() {
+                // Criar o conteúdo do vCard no formato correto
+                const vCardContent = `BEGIN:VCARD
+            VERSION:3.0
+            FN:Ana Claudia de Souza
+            N:Souza;Ana Claudia;;;
+            TEL;CELL:+55 11 99623-2846
+            EMAIL:acs.consult25@gmail.com
+            ORG:ACS Consult
+            TITLE:Gestão de Dados
+            URL:https://www.linkedin.com/in/acs-ana-claudia
+            END:VCARD`;
+            
+                // Criar um Blob com o conteúdo do vCard
+                const blob = new Blob([vCardContent], { type: "text/vcard" });
+                const vCardUrl = URL.createObjectURL(blob);
+            
+                // Configurar o botão para baixar o vCard corretamente
+                document.getElementById("download-vcard").addEventListener("click", function () {
                     const a = document.createElement("a");
                     a.href = vCardUrl;
                     a.download = "contato_ana_claudia.vcf"; // Nome do arquivo para download
+                    document.body.appendChild(a);
                     a.click();
+                    document.body.removeChild(a);
                 });
             </script>
         </div>
